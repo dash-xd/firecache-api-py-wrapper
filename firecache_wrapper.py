@@ -37,7 +37,7 @@ class Firecache:
             headers = auth_header
 
         try:
-            response = requests.request(method, url, json=data, headers=headers)
+            response = requests.request(method=method, url=url, json=data, headers=headers)
             response.raise_for_status()  # Raise an exception for HTTP errors
             return response.json(), response.status_code
         except HTTPError as http_err:
@@ -52,35 +52,35 @@ class Firecache:
     class Document:
         
         @staticmethod
-        def get(document_path):
+        def get(*, document_path):
             path = f"/document/{document_path}"
             return Firecache._make_api_call(method='GET', path=path)
 
         @staticmethod
-        def replace(document_path, data):
+        def replace(*, document_path, data):
             path = f"/document/{document_path}"
             return Firecache._make_api_call(method='PUT', path=path, data=data)
 
         @staticmethod
-        def create(collection_path, data):
+        def create(*, collection_path, data):
             path = f"/document/{collection_path}"
             return Firecache._make_api_call(method='POST', path=path, data=data)
 
         @staticmethod
-        def delete(document_path):
+        def delete(*, document_path):
             path = f"/document/{document_path}"
             return Firecache._make_api_call(method='DELETE', path=path)
 
     class Documents:
 
         @staticmethod
-        def get(collection_path):
+        def get(*, collection_path):
             path = f"/documents/{collection_path}"
             return Firecache._make_api_call(method='GET', path=path)
 
     class Collection:
 
         @staticmethod
-        def get(document_path):
+        def get(*, document_path):
             path = f"/collection/{document_path}"
             return Firecache._make_api_call(method='GET', path=path)
