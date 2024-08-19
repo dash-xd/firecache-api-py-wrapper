@@ -40,5 +40,5 @@ docs, status = Firecache.Documents.get(collection_path="tmp")
 responses.append({"action": "get_documents", "response": docs, "status_code": status})
 
 # Get subcollections
-subcollections, status = Firecache.Collection.get(document_path="")
+subcollections, status = Firecache.Collections.get(document_path="")
 responses.append({"action": "get_subcollections", "response": subcollections, "status_code": status})
