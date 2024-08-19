@@ -78,9 +78,9 @@ class Firecache:
             path = f"/documents/{collection_path}"
             return Firecache._make_api_call(method='GET', path=path)
 
-    class Collection:
+    class Collections:
 
         @staticmethod
         def get(*, document_path):
-            path = f"/collection/{document_path}"
+            path = f"/collections/{document_path}"
             return Firecache._make_api_call(method='GET', path=path)
